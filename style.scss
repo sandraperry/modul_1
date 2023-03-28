@@ -1,0 +1,138 @@
+//Mina variabler 
+$bg-color: #E3E3E3;
+$bg-icon-bar: #FFFFFF;
+$text-color: #707070;
+$menu-icon-color: #000000;
+$icon-color: #6A6068;
+
+*,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    // Bg färg
+    background-color: $bg-color
+}
+
+p {
+    //Stora bokstäver på p-taggarna
+    text-transform: uppercase;
+    //typsnittet
+    font-family: 'Poppins', sans-serif;
+    //Storleken på p-taggarna 
+    font-size: 0.8rem;
+    //färgen på p-taggarna 
+    color: $text-color
+}
+
+//Den box alla mina tre boxar ligger i 
+.container {
+    width: 100%;
+    //padding för att skapa mellanrum mellan korten
+    padding: 1rem;
+
+    //mediafråga för bryt vid platta. Blev 480px då jag upplevde att layouten funkade upp till det.
+    @media (min-width:480px) {
+        // Aktiverar och sätter på flex så att boxarna ligger som jag vill ha dem i ipad.
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    // Mediafråga för att skapa layout för desktop
+    @media (min-width:1024px) {
+        //max för att den inte ska kunna dra ut sig hur långt som helts på en stor skärm. och margin auto för att det ska ligga i mitten av sidan. 
+        max-width: 1024px;
+        margin: auto;
+    }
+
+    //Stylar min header där ikonen för "mer" ligger
+    .main-header {
+        //Padding på top och bottom
+        padding: 2rem 0;
+        flex: 0 0 100%;
+
+        .menu {
+            color: $menu-icon-color;
+        }
+    }
+
+
+    .card {
+        //för att den vita kanten ska sätta sig på bilden, detta aktiverar position:absolute
+        position: relative;
+        //För att skapa mellanrum under korten
+        margin-bottom: 4%;
+
+        // Sätter responsiv för ipad
+        @media (min-width:480px) {
+            //får inte växa, inte krympa och beräknar ut bredden genom att 100% delas på 2 eftersom jag vill ha två bilder bredvid varadnra. Minus 2% betyder att jag vill ha det i spacet mellan.
+            flex: 0 0 calc(100%/2 - 2%);
+        }
+
+        // Sätter responsiv för dator
+        @media (min-width:920px) {
+            //får inte växa, inte krympa och beräknar ut bredden genom att 100% delas på 3 eftersom jag vill ha tre bilder bredvid varadnra. Minus 2% betyder att jag vill ha det i spacet mellan.
+            flex: 0 0 calc(100%/3 - 2%);
+            // behövs inte när bilderna ligger bredvis varandra 
+            margin-bottom: 0;
+        }
+
+        //Stylar profilbilden.
+        .profil {
+            //för att lägga profilbilden i hörnet på bilden.
+            position: absolute;
+            //testade mig fram till dessa mått.
+            top: 1rem;
+            left: 0.8rem;
+        }
+
+        //Stylar bildera
+        .image {
+            width: 100%;
+            display: block;
+        }
+
+        //Stylar vita remsan under varje bild.
+        .icon-bar {
+            background-color: $bg-icon-bar;
+            //För att den vita remsan ska ligga på bilden.
+            position: absolute;
+            //Ligga i botten och sträcka sig ut på hela boxen.
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            //Aktiverar och sätter på flex för att ikonerna ska ligga där jag vill. 
+            display: flex;
+            justify-content: space-between;
+
+            //Stylar generellt på ikonerna i den vita remsan med färg och storlek. 
+            .icon {
+                color: $icon-color;
+                font-size: 1.2rem;
+            }
+
+            //Stylar ikonerna och text som ligger till vänster.
+            .two-icons {
+                flex: 0 0 50%;
+                //aktiverar och sätter flex för att få ikoner och text där jag vill. 
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            //Stylar ikonen och text som ligger till höger. 
+            .one-icon {
+                flex: 0 0 25%;
+                //aktiverar och sätter flex för att få det plaserad där jag vill.
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+        }
+    }
+}
